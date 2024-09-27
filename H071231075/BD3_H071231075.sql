@@ -69,6 +69,8 @@ SELECT * FROM books;
 SELECT * FROM members;
 SELECT * FROM borrowings;
 
+
+
 -- nomor 1
 INSERT  INTO authors (id,NAME, nationality)  
 VALUES 
@@ -99,25 +101,37 @@ VALUES
 (3,2,5,'2023-09-06','2023-09-09'),
 (4,2,3,'2023-09-08',NULL),
 (5,3,2,'2023-09-10',NULL);
-			
+
+-- nomor2			
 SELECT * FROM borrowings WHERE return_date IS NULL;
 UPDATE books
 SET copies_available = copies_available - 1
 WHERE id IN(1,2,3);
 
+
+
+-- nomor3
+SELECT member_id FROM borrowings WHERE return_date IS NULL; 
+
+SELECT membership_type FROM members WHERE id = 3;
+SELECT membership_type FROM members WHERE id = 2;
+SELECT * FROM members WHERE membership_type = 'premium';
 UPDATE members 
 SET membership_type = "standar"
 WHERE id = 3
 
 DELETE from members
-WHERE id = 2
+WHERE id = 2 
 
 SET FOREIGN_KEY_CHECKS =  0
 
+ALTER TABLE borrowings DROP FOREIGN KEY borrowings_ibfk_1;
 
-
+ALTER TABLE borrowings ADD FOREIGN KEY (member_id) REFERENCES members (id) 
+ON DELETE CASCADE;
  
-
+SELECT * FROM borrowings;
+SELECT * FROM members;
 
 
 
