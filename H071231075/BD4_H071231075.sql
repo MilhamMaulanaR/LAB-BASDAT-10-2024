@@ -12,7 +12,7 @@ AND productline NOT LIKE '%vintage%';
 
 -- nomor 3
 SELECT productcode,productname,MSRP FROM products
-WHERE productline LIKE '%Classic__%' AND buyprice > 50; 
+WHERE productline LIKE '%Classic%' AND buyprice > 50; 
 
 -- nomor 4
 SELECT  ordernumber,orderdate,STATUS,customernumber FROM orders
