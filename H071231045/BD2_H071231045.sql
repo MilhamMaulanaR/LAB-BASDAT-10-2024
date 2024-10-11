@@ -33,3 +33,12 @@ FROM payments
 WHERE amount > 10000
 ORDER BY amount DESC
 LIMIT 5 ;
+
+-- soal tambahan
+#1
+SELECT * FROM products
+
+SELECT productName, buyPrice
+FROM Products
+WHERE buyPrice BETWEEN 50 AND 100
+ORDER BY buyPrice ASC;
