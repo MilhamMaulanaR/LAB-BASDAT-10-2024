@@ -38,3 +38,11 @@ AND productCode NOT LIKE 'S18%'
 ORDER BY discountedTotalPrice DESC;
 
 SELECT * FROM orders
+
+-- Soal Tambahan
+SELECT orderNumber, orderDate, STATUS, comments
+FROM orders
+WHERE status = 'In Process'
+AND orderDate BETWEEN '2005-01-01' AND '2005-12-31'
+AND status NOT IN ('Shipped', 'Cancelled')
+AND comments IS NOT NULL 
