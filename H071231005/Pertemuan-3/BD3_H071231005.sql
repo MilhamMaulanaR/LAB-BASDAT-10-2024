@@ -120,11 +120,11 @@ WHERE id = 3;
 DELETE FROM  members
 WHERE id = 2;
 
-SET membership_type = 'Standar'
-WHERE membership_type = 'Premium';
-
-DELETE FROM members 
-WHERE membership_type = 'Standar';
+-- SET membership_type = 'Standar'
+-- WHERE membership_type = 'Premium';
+-- 
+-- DELETE FROM members 
+-- WHERE membership_type = 'Standar';
 
 SELECT * FROM members;
 
