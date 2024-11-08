@@ -50,17 +50,18 @@ LIMIT 3) AS top3
 ORDER BY p.productLine, total_quantity_ordered DESC;
 
 -- soal tambahan
-SELECT 
-	CONCAT(e.firstName,' ',e.lastName) AS employeeName,
-	c.customerName, 
-	SUM(od.quantityOrdered) As totalquantityordered
-FROM customers c
-JOIN employees e ON e.employeeNumber = c.salesRepEmployeeNumber
-JOIN orders o USING(customerNumber)
-join orderdetails od ON od.orderNumber = o.orderNumber
-WHERE e.officeCode in  (SELECT e2.officeCode FROM employees e2 WHERE e2.officeCode = 2)
-GROUP BY customerName
-ORDER BY employeename ;
-
+SELECT CONCAT(e.firstName, ' ', e.lastName) AS employeeName, 
+       c.customerName, 
+       SUM(od.quantityOrdered) AS totalQuantityOrdered
+FROM employees e
+JOIN customers c ON e.employeeNumber = c.salesRepEmployeeNumber
+JOIN orders o ON c.customerNumber = o.customerNumber
+JOIN orderdetails od ON o.orderNumber = od.orderNumber
+WHERE e.officeCode = (
+    SELECT officeCode
+    FROM offices
+    WHERE city = 'Boston'
+)
+GROUP BY e.employeeNumber, c.customerName;
 
 
